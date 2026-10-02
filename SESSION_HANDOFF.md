@@ -1,5 +1,48 @@
 # WoW Core — public project checkpoint
 
+## 2026-10-02: authenticated player runtime foundation (M1 first slice)
+
+Original generic Worker implementation now maps a hashed, expiring/revocable
+machine credential to one server-selected Core and one SQLite Durable Object.
+Strict personal snapshot version 1 supports identity (including second name),
+progression, professions and gear, not complete game coverage or legacy addon
+exports. New records get empty version-isolated modules; sync preserves manual
+notes, rejects stale/same-time-conflicting snapshots and records per-section
+freshness. Private exact read, revision-guarded note writes and bounded canonical
+roster pages with game/faction filters are implemented. No second roster.
+
+Tests run the actual Worker with Cloudflare Miniflare/SQLite, persistence across
+restart, concurrent snapshots, separate deployments and hosted owner isolation.
+SQLite instrumentation verifies covering indexes and fixed query counts at 500
+synthetic characters. This is local runtime evidence, not production billing/load,
+deployment, human login, real-game/voice or federation evidence. Only invented data
+and generated throwaway credentials are tested; private installation is unchanged.
+
+Bootstrap registry: backend secret, maximum 16 credentials/4096 bytes, owner-only
+machine permissions. Not human OAuth, guild permissions or scalable provisioning.
+Config has no public endpoint/account IDs/secrets. No external API/model calls,
+embeddings, background jobs or implicit billing. Development-only Miniflare is
+pinned; audited sharp/undici overrides are regression-tested. Installation scripts
+are disabled. See docs/RUNTIME.md for exact routes, semantics, budgets and limits.
+
+Persistent per-Core write caps (120/minute, 2000/UTC day) commit with record changes,
+survive restart and preserve read access/unchanged retries when exhausted.
+Edge/read-request limits and overall spending controls remain rollout gates.
+
+Next: M1 edge/read abuse controls and secure provisioning/recovery; then
+M2 human identity/hosted onboarding/OAuth, M3 persistent guild policies, M4 peer
+federation, M5 complete allowed collectors and one UI/voice, M6 GM/addon adapters,
+M7 operator/real-client release gates. Do not expose this as a public member
+signup system or claim installed-addon compatibility. Preserve the guild repo's
+existing immutable contract pin: federation source API has not changed.
+
+Verification: 34 player tests pass (16 existing policy tests plus local runtime/
+storage cases and their subtests). Syntax and audit checks pass with zero reported
+dependency vulnerabilities; all 16 guild regression tests also pass (50 combined).
+Clean dependency installation with scripts disabled and package dry-run passed.
+Review staged artifacts and CI before merging. The execution
+track is saved in PLAN.md; keep this same handoff current as work proceeds.
+
 ## 2026-10-02: post-join tooling and addon interoperability
 
 Scope correction: the system serves existing guild members. Recruitment and

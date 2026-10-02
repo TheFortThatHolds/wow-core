@@ -6,7 +6,9 @@
   "type": "module",
   "description": "Platform-neutral player/guild contracts and source-side projection kernel",
   "exports": { ".": "./src/federation.mjs" },
-  "files": ["src/", "docs/"],
+  "files": ["src/", "docs/", "wrangler.jsonc"],
   "engines": { "node": ">=22" },
-  "scripts": { "test": "node --test", "check": "node --check src/federation.mjs" }
+  "scripts": { "test": "node --test test/*.test.mjs", "check": "node scripts/check.mjs" },
+  "devDependencies": { "miniflare": "4.20260730.0" },
+  "overrides": { "sharp": "0.35.4", "undici": "7.29.1" }
 }
