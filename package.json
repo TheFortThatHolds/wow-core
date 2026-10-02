@@ -1,0 +1,12 @@
+{
+  "name": "@wow-core/contracts",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "description": "Platform-neutral player/guild contracts and source-side projection kernel",
+  "exports": { ".": "./src/federation.mjs" },
+  "files": ["src/", "docs/"],
+  "engines": { "node": ">=22" },
+  "scripts": { "test": "node --test", "check": "node --check src/federation.mjs" }
+}

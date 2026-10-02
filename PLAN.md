@@ -36,7 +36,7 @@ Guild planning writes cannot overwrite a player's observed character facts.
 
 - [x] Establish separate public repositories for the player and guild tools.
 - [x] Record the ownership model, privacy boundary and staged plan.
-- [ ] Decide the reusable-code license before importing or releasing code.
+- [x] MIT license selected for the generic public tool.
 
 ### 1. Standalone personal Core
 
@@ -59,7 +59,8 @@ The player-side grant and projection implementation belongs here. Memberships,
 guild roles, invitations, guild views and shared plans belong in wowguild-core.
 Both tools must pin and test the same versioned federation contract.
 
-- [ ] Define membership, roles, explicit sharing presets and per-character grants.
+- [x] Define membership/role/grant contract shapes and source projection kernel.
+- [ ] Review the actual sharing preset before member rollout.
 - [ ] Establish authenticated peer identity without exchanging infrastructure
   passwords or Cloudflare API tokens.
 - [ ] Add scoped read-only character projections first; no arbitrary Core query.
@@ -107,7 +108,7 @@ not a prerequisite or an implied commitment to teach people to code.
 
 ## Decisions still needed before the relevant stage
 
-- Reusable-code license and permission to extract specific private code.
+- Permission/provenance/privacy review before extracting any private code.
 - Initial guild sharing preset, including what officers may see or edit.
 - Player sign-in and peer authentication after reviewing current platform APIs.
 - Who funds optional voice/analysis, and the default hard budget limits.

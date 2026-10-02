@@ -1,5 +1,34 @@
 # WoW Core — public project checkpoint
 
+## 2026-10-02: first policy implementation
+
+This section supersedes the planning-only status below. Original generic code
+now implements contract v1: exact player/game/realm/GUID identity; owner-created
+per-character grants; audience, expiry and revocation checks; source-side
+allowlisted projections; shared invitation/membership schemas. MIT was approved
+and added. There is no import of private implementation code or data.
+
+Local checks: syntax check and all 16 synthetic tests passed; package dry-run
+contains only LICENSE, README.md, package.json, src/federation.mjs and
+docs/FEDERATION.md. No network, model, storage or deployment operation is part
+of the kernel. GitHub CI runs the same checks without secrets or deployment.
+
+IMPORTANT: principal identity, current authorization state and clock are trusted
+server-adapter inputs, not user claims. This kernel is not network authentication
+or persistent storage. Real peer verification, atomic persistence/revocation,
+SSRF/replay defenses, bounded indexes, snapshot merging, installer and voice
+integration remain unbuilt. Missing observations are omitted, not invented.
+
+Existing guild bots are complements, not replacement targets. A future adapter
+may read only approved guild projections. No Discord bot or external system is
+connected, and no sale/checkout or paid seed has been created.
+
+Next: wowguild-core consumes an immutable commit of this authoritative contract
+and tests invitations, approvals, membership, leaving and guild planning roles.
+Then implement trusted authenticated storage adapters, not an unauthenticated
+HTTP wrapper around these functions. Keep the implementation plan and same
+handoff current; do not treat policy tests as deployed federation evidence.
+
 ## 2026-10-02: repository identified and foundation started
 
 Repository: https://github.com/TheFortThatHolds/wow-core
@@ -25,12 +54,12 @@ whitespace errors, checked local Markdown links and scanned for personal values,
 identifiers, credentials and local paths. These documentation checks passed;
 there is no runtime test or deployment claim.
 
-## Next action
+## Historical bootstrap next action
 
 Start PLAN.md stage 1 with storage/auth/character/projection contracts and
 synthetic authorization tests. Keep code independent of the original personal
 Core. Before extracting private code or distributing reusable code, ask the
-owner for a license decision. Review current official platform docs before
+owner for a license decision (resolved: MIT). Review current official platform docs before
 choosing Cloudflare deployment or authentication mechanisms.
 
 After the initial empty-repository bootstrap, use branches, required checks and
