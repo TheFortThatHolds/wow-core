@@ -26,9 +26,9 @@ Verification: all 32 existing local policy tests, both syntax checks and package
 dry-runs passed. Source policy code was not changed; these are regression checks,
 not addon coexistence, CurseForge approval or real-client integration evidence.
 
-Catalog lookup is a useful optional discovery/version/dependency research layer,
-not a source of player saved state. Public project pages are sufficient for the
-current research; any future API application remains separate and unsubmitted.
+Catalog lookup is a deferred addon-builder research aid, not a runtime feature
+of this project or source of player saved state. Public project pages support
+current research; no separate developer-tool API application was submitted.
 
 ## 2026-10-02: optional guild hosting and API capability design
 

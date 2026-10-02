@@ -81,11 +81,12 @@ No author project or file submission has been made for these public tools.
 
 The [third-party catalog API terms](https://support.curseforge.com/support/solutions/articles/9000207405-curse-forge-3rd-party-api-terms-and-conditions)
 are a different integration. Local addon interoperability does not call that API.
-Optional catalog lookup could help addon discovery, game-version/dependency
-research and locating project source/documentation. That is useful even without
-building an addon installer. Catalog metadata is not a player's saved addon
-state, a stable data-export contract or proof of compatibility. Current research
-can use public project pages; API access is a separate future approval decision.
+Catalog lookup could help a separate addon-development/research workflow discover
+projects, compare game-version/dependency information and locate source/docs.
+It is not a planned runtime feature of WoW Core or Guild Core. Catalog metadata
+is not player saved state, a stable data-export contract or proof of compatibility.
+Current research can use public project pages; a separate developer-tool API
+application is deferred, not part of this build.
 No catalog/download manager is needed for the initial design. If proposed later,
 review author distribution approval, key non-sharing, quotas, caching restrictions
 and competition terms before applying or building it. Do not promise a shared API
