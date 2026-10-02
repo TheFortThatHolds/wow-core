@@ -30,6 +30,12 @@ Blizzard roster imports are unclaimed observations, not a second canonical list
 or authority to provision accounts. Capability coverage is version-specific;
 see [docs/BLIZZARD_DATA.md](docs/BLIZZARD_DATA.md).
 
+This is post-join tooling. In-game recruitment/admission remains with the guild's
+existing process. Invitations in our contract authorize Core access, not WoW
+guild membership. Addon interoperability is optional and data-first; see
+[docs/ADDON_INTEROP.md](docs/ADDON_INTEROP.md). Personal `/wowcore sync` and proposed
+GM `/wowguild sync` are separate flows, not one mixed export.
+
 The personal Core owns observed state and manual state separately. Stale addon
 exports cannot overwrite newer observations or manual notes. Every accepted
 new character gets empty, version-isolated baseline modules, not seeded data.
@@ -57,6 +63,8 @@ Guild planning writes cannot overwrite a player's observed character facts.
 - [ ] Build bounded roster indexes and complete snapshot validation/merging.
 - [ ] Make self-onboarding create the baseline modules automatically.
 - [ ] Add private-by-default web sheets and addon/companion pairing.
+- [ ] Specify bounded optional addon adapters with source/version/freshness,
+  personal scope and supported/unavailable status; unknown versions fail safely.
 
 Acceptance: two independently configured test owners sync invented characters
 without manual sheet creation. Each sees only their own canonical records.
@@ -114,6 +122,10 @@ work stops at the configured cap without preventing ordinary sync.
 - [ ] Provide clear return/back/reset paths without losing synced cloud records.
 - [ ] Test a guild invitation from a brand-new player's account end to end.
 - [ ] Check game-client compatibility and update/rollback behavior.
+- [ ] Test coexistence with navigation/quest and guild/raid toolkits without
+  overriding their settings, controls, saved state, arrows or protected actions.
+- [ ] Prepare separate generic addon packages and author-project submissions for
+  CurseForge only after compatibility/privacy checks and publishing authorization.
 - [ ] Release only after license, privacy review and real-client evidence.
 
 Acceptance: an operator, developer or AI coding agent can deploy and configure

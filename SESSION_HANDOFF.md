@@ -1,5 +1,35 @@
 # WoW Core — public project checkpoint
 
+## 2026-10-02: post-join tooling and addon interoperability
+
+Scope correction: the system serves existing guild members. Recruitment and
+joining the in-game guild are outside scope; Core access invitations remain
+separate authentication/consent gates. Complement existing addons rather than
+replace quest/navigation/raid/loot workflows. Keep personal and GM guild sync
+separate in collectors, data, authorization and storage destinations.
+
+Added docs/ADDON_INTEROP.md with adapter boundaries, source/version/freshness,
+candidate integration research, conflict/absence tests and separate CurseForge
+publishing versus catalog-API paths. No whole addon databases, installed-addon
+inventory, guide packs, private messages or executable imports may be uploaded.
+Installed code was inspected read-only; no third-party source, user state or
+configuration was copied into this repository. Candidate research is not tested
+compatibility. No collector, action tool, CurseForge application or release was
+implemented/submitted, and no installed addon was changed.
+
+Existing policy suites are unchanged. Next remains authenticated storage and
+isolation, with small reviewed optional adapters after their schema/privacy gates.
+Save test/merge receipts with this checkpoint; do not advertise blanket addon
+support or infer Blizzard permission from another addon's behavior.
+
+Verification: all 32 existing local policy tests, both syntax checks and package
+dry-runs passed. Source policy code was not changed; these are regression checks,
+not addon coexistence, CurseForge approval or real-client integration evidence.
+
+Catalog lookup is a deferred addon-builder research aid, not a runtime feature
+of this project or source of player saved state. Public project pages support
+current research; no separate developer-tool API application was submitted.
+
 ## 2026-10-02: optional guild hosting and API capability design
 
 Latest requirements supersede mandatory per-player Cloudflare wording below.

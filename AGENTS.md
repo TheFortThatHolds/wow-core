@@ -13,6 +13,12 @@ is a deployment mode, not a dependency on the project author.
   Never imply application permissions hide data from the infrastructure owner.
 - Stay guild-agnostic: configure game/channel, region, realm and guild identity;
   no fixed guild, Discord server, operator or Blizzard namespace.
+- Guild integration is for existing guild members, not recruitment or joining
+  the in-game guild. Core access invitations are a separate security relationship.
+- Complement existing addons. Prefer supported APIs/exports and versioned,
+  allowlisted data adapters; never dump another addon's whole saved database.
+- Keep personal sync and GM guild sync separate in collectors, payloads, storage,
+  permissions and destinations. Being GM does not widen personal collection.
 - A guild Core is independently owned; it receives scoped permissions, not
   personal infrastructure credentials or ownership of player records.
 - No dependency on the original builder's accounts, email, domain, private Core,
