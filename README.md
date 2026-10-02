@@ -32,6 +32,11 @@ addon sync coverage or authorize protected Blizzard data on their behalf.
 See [docs/HOSTING.md](docs/HOSTING.md) and
 [docs/BLIZZARD_DATA.md](docs/BLIZZARD_DATA.md) for the design and data boundaries.
 
+Guild integration starts after someone has joined their guild through its
+existing process. Core connection invitations do not invite characters into
+WoW guilds. Existing quest, navigation, raid and loot addons should keep their
+jobs; see the data-first [addon interoperability plan](docs/ADDON_INTEROP.md).
+
 Cloud services must remain usable when a player's PC is off. The local companion
 is needed for local addon exports and in-game microphone controls, not to host
 the guild service.
