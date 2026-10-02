@@ -3,11 +3,16 @@
 Read PUBLIC_BOUNDARY.md before editing or publishing. This repository contains
 the player tool; the separate wowguild-core repository contains the guild tool.
 Offer software and technical setup instructions, not a course, consulting
-program or hosted account platform.
+program or centrally operated account platform. Optional guild-managed hosting
+is a deployment mode, not a dependency on the project author.
 
 ## Product contract
 
-- Players own their own Cloudflare deployments and canonical character data.
+- Players choose their own Cloudflare deployment or an optional guild-hosted
+  member Core. Each member has a distinct logical Core ID and canonical records.
+  Never imply application permissions hide data from the infrastructure owner.
+- Stay guild-agnostic: configure game/channel, region, realm and guild identity;
+  no fixed guild, Discord server, operator or Blizzard namespace.
 - A guild Core is independently owned; it receives scoped permissions, not
   personal infrastructure credentials or ownership of player records.
 - No dependency on the original builder's accounts, email, domain, private Core,
@@ -30,6 +35,11 @@ program or hosted account platform.
   membership verification on unsupported clients.
 - Each user pairs only to their own Core. A pairing credential must never act as
   a guild administrator or authenticate as the original builder.
+- Hosted credentials map to one member Core on the server, not a caller-selected
+  tenant ID. Enforce isolation in storage, indexes, caches, jobs and voice tools.
+- Hosting does not grant Blizzard access. GM rank is not permission to retrieve
+  protected member account data; each member authorizes their own OAuth scope.
+  A public roster observation is not account ownership or sharing consent.
 - Do not expose private records in public health, setup, diagnostic, search,
   embedding, log or error routes. Private data must remain private on AI failure.
 - Before federation, specify signed peer identity, key rotation, revocation,

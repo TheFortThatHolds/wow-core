@@ -25,6 +25,13 @@ Do not use display names as keys or merge beta/release channels. Core IDs must
 remain stable when endpoint domains or signing keys rotate. Provisioning and
 actual Blizzard identity validation are future adapter responsibilities.
 
+`coreId` names one logical player Core, not an operator's Cloudflare account.
+Self-owned and guild-hosted member Cores use the same contract. A trusted server
+must map authenticated sessions/pairing to the exact member Core; callers cannot
+choose a different owner's ID. See [HOSTING.md](HOSTING.md). Hosted source-side
+filtering still happens before guild/model access, even on shared infrastructure.
+It does not conceal stored data from the infrastructure operator.
+
 ## Source-side sharing
 
 Only the verified owner can create/revoke a grant. It names one guild Core,

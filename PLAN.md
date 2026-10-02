@@ -2,7 +2,8 @@
 
 ## Confirmed requirements
 
-Each player owns a Core in their own Cloudflare account. A guild owns a separate
+Each player chooses a self-owned Cloudflare deployment or an optional member
+Core hosted by a guild operator. A guild owns a separate logical coordination
 Core. Character ownership does not move when a member joins or leaves. The
 companion talks to the player's Core; authorized guild information and actions
 appear behind that same voice interface.
@@ -10,8 +11,8 @@ appear behind that same voice interface.
 This repository builds the standalone player tool. The separately deployed
 guild tool lives in [wowguild-core](https://github.com/TheFortThatHolds/wowguild-core).
 These are software tools with technical setup instructions, not a course or a
-hosted account platform. People, developers or AI coding agents can configure
-them using their own resources. No private personal system is a dependency.
+centrally operated account platform. People, developers or AI coding agents can
+configure them using their own resources. No private personal system is a dependency.
 
 ## Boundaries
 
@@ -20,6 +21,14 @@ realm and GUID. A Core ID should remain stable through domain changes and key
 rotation. A human name, claimed guild name or remote record ID never proves
 ownership. Handle absent or conflicting identifiers explicitly; fail rather
 than silently merge different characters.
+
+Core IDs are logical member identities, not Cloudflare account IDs. Hosted
+members do not share one owner identity. See [docs/HOSTING.md](docs/HOSTING.md):
+server-side isolation is required, but the operator controls the infrastructure.
+Game/channel, region-qualified realm and guild identity are configurable. Public
+Blizzard roster imports are unclaimed observations, not a second canonical list
+or authority to provision accounts. Capability coverage is version-specific;
+see [docs/BLIZZARD_DATA.md](docs/BLIZZARD_DATA.md).
 
 The personal Core owns observed state and manual state separately. Stale addon
 exports cannot overwrite newer observations or manual notes. Every accepted
@@ -43,6 +52,8 @@ Guild planning writes cannot overwrite a player's observed character facts.
 - [ ] Define the storage, authentication, character and projection contracts.
 - [ ] Build an owner-authenticated personal Core with configurable endpoints;
   no connection to the original builder's private infrastructure.
+- [ ] Support optional guild-hosted member spaces with server-mapped identities,
+  explicit operator-access disclosure, quotas, export and migration.
 - [ ] Build bounded roster indexes and complete snapshot validation/merging.
 - [ ] Make self-onboarding create the baseline modules automatically.
 - [ ] Add private-by-default web sheets and addon/companion pairing.
@@ -52,6 +63,10 @@ without manual sheet creation. Each sees only their own canonical records.
 Forged owner hints, wrong GUIDs, stale exports and cross-channel reuse cannot
 overwrite another character. Hot-path budgets remain bounded with many unrelated
 records. No real private exports appear in the public repository or CI.
+Repeat with two member Cores on one operator backend: swapping Core IDs, record
+IDs, pairing tokens, OAuth sessions, search filters or voice arguments must fail.
+Leaving cannot silently erase personal records; hosted retention/export must be
+tested. Neither mode may rely on GM rank for protected Blizzard account access.
 
 ### 2. Guild permissions and federation
 
@@ -93,6 +108,8 @@ work stops at the configured cap without preventing ordinary sync.
 
 - [ ] Document deployment/setup requirements for a fresh Cloudflare account, with
   minimal privileges, recovery and explicit cost expectations.
+- [ ] Document the no-Cloudflare member path and the guild operator's provisioning,
+  recovery, payer, retention and member-export responsibilities.
 - [ ] Build the companion's endpoint/pairing flow and addon installation path.
 - [ ] Provide clear return/back/reset paths without losing synced cloud records.
 - [ ] Test a guild invitation from a brand-new player's account end to end.
@@ -105,6 +122,9 @@ then pair, sync, join and speak without creating character sheets. Cancelling
 setup does not trap them. No step requires the project author's credentials or
 keeping the guild leader's PC on. A self-service deployment wizard is optional,
 not a prerequisite or an implied commitment to teach people to code.
+Test both self-owned and guild-hosted members together in one configurable guild.
+An unsupported game namespace must show partial/unavailable API coverage, not
+borrow beta/release facts or block allowed local sync.
 
 ## Decisions still needed before the relevant stage
 
