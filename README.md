@@ -46,9 +46,14 @@ the guild service.
 
 ## Current status
 
-This repository currently contains the implementation plan and builder rules.
-There is no deployable public runtime, installer or guild federation yet. The
-steps above describe the target experience, not working installation commands.
+This repository contains the version-1 sharing/membership contracts, a pure
+source-side permission/projection kernel and synthetic tests. See
+[docs/FEDERATION.md](docs/FEDERATION.md). There is no deployable public runtime,
+installer, network authentication or guild federation yet. The steps above
+describe the target experience, not working installation commands.
+
+Development checks (Node.js 22 or later): `npm run check` and `npm test`.
+No dependencies, private accounts or model calls are needed for these tests.
 
 Only generic code, schemas, synthetic tests and operator setup instructions
 belong here. Never include private source configuration, records, transcripts,
@@ -60,6 +65,6 @@ Read [PLAN.md](PLAN.md) for the staged build and acceptance tests, and
 
 ## License
 
-A reusable-code license has not been selected yet. Public repository visibility
-alone is not an open-source license; settle licensing before distributing a
-reusable release or importing code from private projects.
+MIT; see [LICENSE](LICENSE). The public tool stays freely reusable. Optional
+setup/seed offerings must not restrict the rights granted by the code license.
+Private-source extraction still requires provenance and privacy review.
