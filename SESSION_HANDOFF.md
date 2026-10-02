@@ -23,9 +23,13 @@ Existing guild bots are complements, not replacement targets. A future adapter
 may read only approved guild projections. No Discord bot or external system is
 connected, and no sale/checkout or paid seed has been created.
 
-Next: wowguild-core consumes an immutable commit of this authoritative contract
-and tests invitations, approvals, membership, leaving and guild planning roles.
-Then implement trusted authenticated storage adapters, not an unauthenticated
+Both first implementation PRs are merged: wow-core #1 and wowguild-core #1.
+Their GitHub PR CI checks passed (player run 37063231792, guild run 37063886259).
+The guild kernel consumes the immutable player source commit and its 16 tests
+passed too: 32 synthetic tests across both projects. Guild approval/withdrawal
+are proposed policy transitions, not live network/persistent operations.
+
+Next: implement trusted authenticated storage adapters, not an unauthenticated
 HTTP wrapper around these functions. Keep the implementation plan and same
 handoff current; do not treat policy tests as deployed federation evidence.
 
