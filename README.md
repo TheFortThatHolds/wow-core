@@ -61,14 +61,20 @@ the guild service.
 
 ## Current status
 
-This repository contains the version-1 sharing/membership contracts, a pure
-source-side permission/projection kernel and synthetic tests. See
-[docs/FEDERATION.md](docs/FEDERATION.md). There is no deployable public runtime,
-installer, network authentication, hosted member provisioning or guild federation
-yet. The steps above describe the target experience, not working installation commands.
+This repository contains version-1 sharing/membership contracts, a source-side
+projection kernel and the first authenticated player storage/sync Worker slice.
+The new runtime maps machine pairing credentials to isolated SQLite storage,
+auto-creates baseline character modules and preserves private notes across sync.
+See [docs/RUNTIME.md](docs/RUNTIME.md) for implemented routes, limits and evidence,
+and [docs/FEDERATION.md](docs/FEDERATION.md) for the separate sharing contract.
+It is locally tested, not deployed or ready to install. Human login, secure
+member provisioning, full addon coverage, sheets, companion and federation remain
+unbuilt. The steps above describe the target experience, not installation commands.
 
-Development checks (Node.js 22 or later): `npm run check` and `npm test`.
-No dependencies, private accounts or model calls are needed for these tests.
+Development checks (Node.js 24 recommended): `npm ci --ignore-scripts`,
+`npm run check`, `npm test`, `npm audit`, and `npm pack --dry-run`.
+Development-only Cloudflare test tools are installed; no private accounts,
+network credentials or model calls are required. Runtime code has no dependencies.
 
 Only generic code, schemas, synthetic tests and operator setup instructions
 belong here. Never include private source configuration, records, transcripts,

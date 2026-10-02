@@ -47,6 +47,22 @@ Guild planning writes cannot overwrite a player's observed character facts.
 
 ## Build order and acceptance gates
 
+The current execution track is: M1 player authentication/storage/sync foundation;
+M2 secure provisioning, hosted member sign-in and Blizzard OAuth; M3 persistent
+guild membership/plans; M4 authenticated scoped federation; M5 full allowed
+snapshot/addon/companion/sheet/voice integration; M6 separate GM collector and
+reviewed addon adapters; M7 fresh-operator/end-to-end/real-client release gates.
+These milestones refine the stages below, not bypass their acceptance tests.
+Update this same plan and SESSION_HANDOFF after each checked implementation slice.
+
+M1 first slice implemented: server-mapped machine credentials, per-Core SQLite
+Durable Objects, bounded canonical roster/exact reads, strict initial snapshot
+schema and atomic merge, empty template onboarding, manual note preservation and
+stale/replay rejection, persistent mutation caps. Locally verified only; see
+docs/RUNTIME.md. M1 remains in progress: edge/read abuse limits,
+provisioning/recovery and full snapshot
+coverage acceptance are not complete. Human sign-in and real clients are later.
+
 ### 0. Public foundation — current checkpoint
 
 - [x] Establish separate public repositories for the player and guild tools.
@@ -55,7 +71,12 @@ Guild planning writes cannot overwrite a player's observed character facts.
 
 ### 1. Standalone personal Core
 
-- [ ] Define the storage, authentication, character and projection contracts.
+- [x] Define initial storage, machine authentication, character and projection
+  contracts (human/peer authentication and complete collection schemas remain).
+- [x] Implement and locally test an isolated authenticated storage/sync slice,
+  canonical summary pages, automatic empty templates and note preservation.
+- [x] Enforce persistent per-Core mutation caps and verify fixed query/index
+  budgets at 500 synthetic characters (not production spending/load evidence).
 - [ ] Build an owner-authenticated personal Core with configurable endpoints;
   no connection to the original builder's private infrastructure.
 - [ ] Support optional guild-hosted member spaces with server-mapped identities,
