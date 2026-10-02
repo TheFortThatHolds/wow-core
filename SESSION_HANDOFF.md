@@ -1,5 +1,32 @@
 # WoW Core — public project checkpoint
 
+## 2026-10-02: optional guild hosting and API capability design
+
+Latest requirements supersede mandatory per-player Cloudflare wording below.
+Guild-agnostic configuration supports self-owned deployments and optional
+guild-hosted member Cores. Each member keeps a distinct logical Core identity
+and canonical records; hosted mode is not one shared owner account. Members must
+be told the operator controls the server and can technically access stored data.
+Export/migration, retention, cost limits and server-side isolation are rollout
+gates, not implemented features. See docs/HOSTING.md.
+
+Official Blizzard documentation was inspected on 2026-10-02. Guild profile,
+roster, activity and achievements are documented for Retail and Classic; no
+GM-only permission is documented. Account/protected-character data requires
+that member's OAuth authorization and wow.profile scope. Hosting location does
+not change this. Game/namespace support and freshness must be tested separately;
+no Forever beta/release coverage is claimed. See docs/BLIZZARD_DATA.md.
+
+This change is design/documentation only; the policy implementation is unchanged.
+Both suites still have 16 synthetic tests each, with no network or hosted-runtime
+claim. The next implementation gate is authenticated storage with exact member
+identity mapping, cross-tenant denial tests and bounded platform-call budgets.
+Do not deploy a public multi-member endpoint around the unauthenticated kernel.
+
+Verification for this checkpoint: 32 local tests, both syntax checks and both
+package dry-runs passed. Reviewed public diffs/package file lists; local Markdown
+links, whitespace and private-value scans passed. No runtime service was changed.
+
 ## 2026-10-02: first policy implementation
 
 This section supersedes the planning-only status below. Original generic code

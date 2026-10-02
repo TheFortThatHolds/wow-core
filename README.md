@@ -1,11 +1,12 @@
 # WoW Core
 
-A player-owned World of Warcraft companion, with optional guild connections.
+A World of Warcraft companion, with optional connections to any configured guild.
 
-Each player runs their own Core in their own Cloudflare account. A guild runs a
-separate guild Core. Joining grants access to selected character information;
-it does not transfer ownership of characters or give the guild access to a
-player's Cloudflare account.
+Players can run their own Core in their own Cloudflare account, or opt into a
+member Core hosted by their guild operator. The guild coordination Core remains
+a separate logical service. Joining grants selected character information,
+not ownership of a player's records or their infrastructure credentials.
+Guild-hosted application privacy is not privacy from the server operator.
 
 ## Two tools, independently owned
 
@@ -13,17 +14,23 @@ This repository is the player tool. [WoW Guild Core](https://github.com/TheFortT
 is the separately deployed guild tool. Either can be configured without the
 project author's infrastructure or accounts.
 
-This is a software tool, not a course or a hosted account platform. Operators
-may set it up themselves, use a developer or use an AI coding agent. Documentation
-will cover requirements, configuration and connecting their own resources.
+This is a software tool, not a course or a centrally operated account platform.
+Operators may set it up themselves, use a developer or use an AI coding agent.
+Documentation will cover requirements, configuration and connecting their own resources.
 
 ## Intended experience
 
-1. Deploy your personal Core into your own Cloudflare account.
+1. Choose your own deployment or accept an optional guild-hosted member space.
 2. Install and pair the companion and addon once.
 3. Run `/wowcore sync` in game to onboard or update the current character.
 4. Accept a guild invitation and approve the sharing policy.
 5. Use one voice companion for your character and permitted guild information.
+
+Guild-hosted members should need no Cloudflare account or developer keys. They
+still sign in, consent and pair their own companion. Hosting does not reduce
+addon sync coverage or authorize protected Blizzard data on their behalf.
+See [docs/HOSTING.md](docs/HOSTING.md) and
+[docs/BLIZZARD_DATA.md](docs/BLIZZARD_DATA.md) for the design and data boundaries.
 
 Cloud services must remain usable when a player's PC is off. The local companion
 is needed for local addon exports and in-game microphone controls, not to host
@@ -43,14 +50,17 @@ the guild service.
 - Leaving: revoke future guild access without deleting personal characters.
   Already disclosed information cannot be made unseen; caching and retention
   rules must be visible to members.
+- Hosting: a guild operator can technically access data stored on their server.
+  Members must be told this before choosing hosted mode. Export/migration and
+  the hosted-space retention policy are required before that mode rolls out.
 
 ## Current status
 
 This repository contains the version-1 sharing/membership contracts, a pure
 source-side permission/projection kernel and synthetic tests. See
 [docs/FEDERATION.md](docs/FEDERATION.md). There is no deployable public runtime,
-installer, network authentication or guild federation yet. The steps above
-describe the target experience, not working installation commands.
+installer, network authentication, hosted member provisioning or guild federation
+yet. The steps above describe the target experience, not working installation commands.
 
 Development checks (Node.js 22 or later): `npm run check` and `npm test`.
 No dependencies, private accounts or model calls are needed for these tests.
