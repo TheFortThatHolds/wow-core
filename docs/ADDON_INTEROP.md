@@ -1,5 +1,10 @@
 # Addon interoperability — data-first design
 
+Other authors' addons are independently installed, never part of the standard
+WoW Core package or required for its basic operation. Operator-selected adapters
+and their configuration stay separate. For a practical agent-assisted workflow,
+see [Connect your own addons](CONNECT_YOUR_ADDONS.md).
+
 WoW Core supplements a player's/guild's existing toolkit. It is post-join guild
 tooling, not recruitment, guild-finder or an in-game guild admission system.
 Core invitations authorize access for existing members; they do not invite,

@@ -1,5 +1,16 @@
 # WoW Core — public project checkpoint
 
+## 2026-10-20: optional addon connection instructions
+
+Clarified standalone packaging: no third-party addons bundled or required.
+Added an agent-assisted workflow for operator-selected information sources,
+separate adapters, complete ingestion/query paths, provenance/identity/freshness,
+bounded reads, absent-addon behavior and generic example sharing. No new runtime
+adapter, game support, deployment or release is claimed. Current M1/M2 and later
+M5/M6 gates remain unchanged. Validation: documentation/link/package/privacy
+review, existing syntax checks and package dry-run. Next: continue staged runtime
+work; implement specific adapters only for the operator's selected requirements.
+
 ## 2026-10-02: authenticated player runtime foundation (M1 first slice)
 
 Original generic Worker implementation now maps a hashed, expiring/revocable
