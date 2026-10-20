@@ -2,6 +2,12 @@
 
 A World of Warcraft companion, with optional connections to any configured guild.
 
+WoW Core does not bundle or require other authors' addons. You can connect the
+addons you choose through separate optional adapters, so the information you care
+about is available to your Core agent. See [Connect your own addons with a coding
+agent](docs/CONNECT_YOUR_ADDONS.md) for the implementation workflow and current
+limits; these instructions do not claim every addon is already supported.
+
 Players can run their own Core in their own Cloudflare account, or opt into a
 member Core hosted by their guild operator. The guild coordination Core remains
 a separate logical service. Joining grants selected character information,
